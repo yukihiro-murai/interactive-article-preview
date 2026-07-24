@@ -1457,6 +1457,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .series-cta{box-sizing:border-box;width:100%;max-width:880px;margin-right:auto;margin-left:auto}
 /* /N) 本文グリッドの最終調整 */
 
+/* ========== O) 導線・人物写真・章境界の微調整（2026-07-24） ========== */
+/* 公開済み回への移動は端末設定に左右されず、穏やかなスクロールで見せる。 */
+html{scroll-behavior:smooth!important}
+
+/* 後続パートの手前にだけ薄い罫線を置き、連載の切れ目を静かに示す。 */
+.article-part~.article-part{
+  margin-top:66px;
+  padding-top:54px;
+  border-top:1px solid #d8e4e8;
+}
+
+/* 円形の枠は固定し、市川先生の写真だけを内側で少し左へ送る。 */
+.ichikawa-avatar-frame{
+  display:block;
+  flex:0 0 auto;
+  box-sizing:border-box;
+  overflow:hidden;
+  border-radius:50%;
+  line-height:0;
+}
+.ichikawa-avatar-frame>img{
+  display:block;
+  width:108%!important;
+  max-width:none!important;
+  height:108%!important;
+  margin:-4% 0 0 -8%;
+  border:0!important;
+  border-radius:0!important;
+  object-fit:cover;
+  box-shadow:none!important;
+  transform:none!important;
+}
+.speaker-profile>.ichikawa-avatar-frame{width:136px;height:136px;border:5px solid #fff}
+.talk-speaker>.ichikawa-avatar-frame{width:78px;height:78px;border:2px solid #a5d2ce}
+.recap-comment>.ichikawa-avatar-frame{
+  width:96px;
+  height:96px;
+  border:3px solid #fff;
+  box-shadow:0 0 0 3px var(--thread-teal);
+}
+@media only screen and (max-width:768px){
+  .article-part~.article-part{margin-top:50px;padding-top:42px}
+  .speaker-profile>.ichikawa-avatar-frame{width:118px;height:118px}
+  .talk-speaker>.ichikawa-avatar-frame{width:64px;height:64px}
+  .recap-comment>.ichikawa-avatar-frame{width:72px;height:72px}
+}
+@media only screen and (max-width:420px){
+  .recap-comment>.ichikawa-avatar-frame{width:60px;height:60px}
+}
+/* /O) 導線・人物写真・章境界の微調整 */
+
 /* /2026-07-17 デザイン刷新レイヤー */
 </style>
 
@@ -2616,5 +2667,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="js/jquery-3.7.1.min.js"></script>
 <script src="js/aos.js"></script>
 <script src="js/style.js"></script>
+<script>
+(function(){
+  var activeScrollAnimation=0;
+  document.querySelectorAll('img[src*="ichikawa_smile_avatar"]').forEach(function(img){
+    if(img.parentElement.classList.contains('ichikawa-avatar-frame')) return;
+    var frame=document.createElement('span');
+    frame.className='ichikawa-avatar-frame';
+    img.parentNode.insertBefore(frame,img);
+    frame.appendChild(img);
+  });
+  document.querySelectorAll('.article-map__item[href^="#"]').forEach(function(link){
+    link.addEventListener('click',function(event){
+      var target=document.querySelector(this.getAttribute('href'));
+      if(!target) return;
+      event.preventDefault();
+      if(activeScrollAnimation) window.cancelAnimationFrame(activeScrollAnimation);
+      var startY=window.pageYOffset;
+      var endY=target.getBoundingClientRect().top+startY-110;
+      var distance=endY-startY;
+      var duration=Math.min(900,Math.max(520,Math.abs(distance)*.025));
+      var startedAt=null;
+      function animateScroll(timestamp){
+        if(startedAt===null) startedAt=timestamp;
+        var progress=Math.min((timestamp-startedAt)/duration,1);
+        var eased=1-Math.pow(1-progress,3);
+        window.scrollTo({top:startY+distance*eased,behavior:'instant'});
+        if(progress<1) activeScrollAnimation=window.requestAnimationFrame(animateScroll);
+        else activeScrollAnimation=0;
+      }
+      window.history.pushState(null,'',this.getAttribute('href'));
+      activeScrollAnimation=window.requestAnimationFrame(animateScroll);
+    });
+  });
+})();
+</script>
 </body>
 </html>
