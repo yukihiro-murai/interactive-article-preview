@@ -1374,17 +1374,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 /* /I) マストヘッド圧縮 */
 
-/* ========== J) 章リードの左端統一（2026-07-18） ========== */
-.part-lead{margin-left:0!important}
-@media (min-width:769px){
-  .part-meta{margin-left:138px!important}
-}
-@media (min-width:421px) and (max-width:768px){
-  .part-meta{margin-left:95px!important}
-}
-@media only screen and (max-width:420px){
-  .part-meta{margin-left:0!important}
-}
+/* ========== J) 章リード・タグ列の左端統一（2026-07-18） ========== */
+.part-lead,.part-meta{margin-left:0!important}
+.part-meta{justify-content:flex-start}
 /* /J) 章リードの左端統一 */
 
 /* ========== K) タイトル階層反転＋連載マップ可読性向上（2026-07-18） ========== */
@@ -1456,6 +1448,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .series-cta p,
 .article-disclaimer h3{font-size:16px!important}
 .article-disclaimer li{font-size:14px!important}
+.talk-bubble>.article-note{box-sizing:border-box;width:100%;margin:12px 0 16px;text-align:left}
+.talk-bubble>.article-note:last-child{margin-bottom:0}
 /* /M) アクセシビリティ文字サイズ調整 */
 
 /* /2026-07-17 デザイン刷新レイヤー */
@@ -1645,7 +1639,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ibayashi.jpg" alt="井林雄太先生" width="450" height="450">
               <p class="talk-speaker-name">井林先生</p>
             </div>
-            <div class="talk-bubble"><p>たとえば、GLP-1受容体作動薬っていう薬があって。<span class="article-note">（※製剤によって、2型糖尿病や肥満症などの治療に用いられる薬）</span></p><p>肥満のある患者さんだと、有力な選択肢になることがあるんです。</p><p>でも、認知症があって、ご家族の支援も十分でない患者さんだと、使いたくても難しくて。</p></div>
+            <div class="talk-bubble"><p>たとえば、GLP-1受容体作動薬っていう薬があって。</p><span class="article-note">（※製剤によって、2型糖尿病や肥満症などの治療に用いられる薬）</span><p>肥満のある患者さんだと、有力な選択肢になることがあるんです。</p><p>でも、認知症があって、ご家族の支援も十分でない患者さんだと、使いたくても難しくて。</p></div>
           </div>
           <div class="talk-row">
             <div class="talk-speaker">
@@ -1716,7 +1710,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ibayashi.jpg" alt="井林雄太先生" width="450" height="450">
               <p class="talk-speaker-name">井林先生</p>
             </div>
-            <div class="talk-bubble"><p>その典型が、SGLT2阻害薬ですね。<span class="article-note">（※2型糖尿病に加え、製剤によって慢性心不全や慢性腎臓病にも用いられる薬）</span></p><p>循環器の先生は「とにかく心不全を減らしたい」から、前向きに使う。</p></div>
+            <div class="talk-bubble"><p>その典型が、SGLT2阻害薬ですね。</p><span class="article-note">（※2型糖尿病に加え、製剤によって慢性心不全や慢性腎臓病にも用いられる薬）</span><p>循環器の先生は「とにかく心不全を減らしたい」から、前向きに使う。</p></div>
           </div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
@@ -2319,7 +2313,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ichikawa_smile_avatar.jpg" alt="市川峰大先生" width="450" height="450">
               <p class="talk-speaker-name">市川先生</p>
             </div>
-            <div class="talk-bubble"><p>ただ、生成AIの特性上、もっともらしい答えを探すことにはたけていますが、まれだけど大事な鑑別が抜けることがあって。<span class="article-note">（※鑑別＝症状の原因として疑われる病気を挙げ、絞り込んでいくこと）</span></p></div>
+            <div class="talk-bubble"><p>ただ、生成AIの特性上、もっともらしい答えを探すことにはたけていますが、まれだけど大事な鑑別が抜けることがあって。</p><span class="article-note">（※鑑別＝症状の原因として疑われる病気を挙げ、絞り込んでいくこと）</span></div>
           </div>
           <div class="talk-row">
             <div class="talk-speaker">
@@ -2340,7 +2334,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ibayashi.jpg" alt="井林雄太先生" width="450" height="450">
               <p class="talk-speaker-name">井林先生</p>
             </div>
-            <div class="talk-bubble"><p>「デスキリング<span class="article-note">（※AIへの依存などで技能が低下すること）</span>」って言葉も出てきていますよね。</p><p><strong>AIに頼りきって自分を磨かないと、医師としての力が育たない</strong>。だから逆に、医師教育が大事になってくると思うんです。</p></div>
+            <div class="talk-bubble"><p>「デスキリング」って言葉も出てきていますよね。</p><span class="article-note">（※AIへの依存などで技能が低下すること）</span><p><strong>AIに頼りきって自分を磨かないと、医師としての力が育たない</strong>。だから逆に、医師教育が大事になってくると思うんです。</p></div>
           </div>
           <div class="talk-row">
             <div class="talk-speaker">
@@ -2433,7 +2427,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ichikawa_smile_avatar.jpg" alt="市川峰大先生" width="450" height="450">
               <p class="talk-speaker-name">市川先生</p>
             </div>
-            <div class="talk-bubble"><p>若手だと、臨床の疑問をまずAIに聞く人が、かなり増えてます。</p><p>そのあと成書<span class="article-note">（※専門書）</span>や元論文で確認する人もいますけど、確認せずに済ませちゃうケースもあって。そこが課題ですね。</p></div>
+            <div class="talk-bubble"><p>若手だと、臨床の疑問をまずAIに聞く人が、かなり増えてます。</p><p>そのあと成書や元論文で確認する人もいますけど、確認せずに済ませちゃうケースもあって。そこが課題ですね。</p><span class="article-note">（※専門書）</span></div>
           </div>
           <div class="article-callout key"><span class="ey">コラム</span><p>補足：AI依存とは別の概念。クリニカル・イナーシャ（臨床的惰性）。必要な治療の開始・強化が行われず、現状維持が続いてしまう傾向を指します。AIへの依存や、自己学習不足そのものを指す言葉ではありません。</p></div>
           <div class="talk-row">
@@ -2498,7 +2492,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
               <p class="talk-speaker-name">平井</p>
             </div>
-            <div class="talk-bubble"><p>製薬企業の一部では、医師との接点データから、次に届ける情報を提案する「ネクスト・ベスト・アクション」にも取り組んでいますよね。<span class="article-note">（※医師ごとに、次の適切な情報提供を提案する考え方）</span></p><p>そうやって選ばれた情報を届けられるのって、医師として、どう感じますか？</p></div>
+            <div class="talk-bubble"><p>製薬企業の一部では、医師との接点データから、次に届ける情報を提案する「ネクスト・ベスト・アクション」にも取り組んでいますよね。</p><span class="article-note">（※医師ごとに、次の適切な情報提供を提案する考え方）</span><p>そうやって選ばれた情報を届けられるのって、医師として、どう感じますか？</p></div>
           </div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
@@ -2519,7 +2513,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ichikawa_smile_avatar.jpg" alt="市川峰大先生" width="450" height="450">
               <p class="talk-speaker-name">市川先生</p>
             </div>
-            <div class="talk-bubble"><p>その一手間に、人間の専門性が出ますよね。</p><p>KOL<span class="article-note">（※その分野で影響力のある医師）</span>との信頼関係を築くうえでも、最初の問いかけって大事で。</p><p>背景を理解してると伝われば、率直な意見も伺いやすくなる。</p></div>
+            <div class="talk-bubble"><p>その一手間に、人間の専門性が出ますよね。</p><p>KOLとの信頼関係を築くうえでも、最初の問いかけって大事で。</p><p>背景を理解してると伝われば、率直な意見も伺いやすくなる。</p></div>
           </div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
