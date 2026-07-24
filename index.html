@@ -239,8 +239,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .series-hero:after,.article-part:after{display:none}
 }
 
-
-
 /* 2026-07 refined editorial design: decorative rules removed, typography and grid enlarged. */
 .series-eyebrow:before,
 .hero-media:before,
@@ -1516,6 +1514,200 @@ html{scroll-behavior:smooth!important}
 }
 /* /O) 導線・人物写真・章境界の微調整 */
 
+/* ========== P) 対話から解説への接続と整理リストの密度調整（2026-07-24） ========== */
+/* 解説は直前の発言に近づけ、次の対話との間を広めに取る。 */
+@media (min-width:769px){
+  .talk-row:has(+ .article-callout){margin-bottom:16px}
+  .talk-row + .article-callout{
+    box-sizing:border-box;
+    width:calc(100% - 116px);
+    max-width:none;
+    margin-top:0;
+    margin-bottom:46px;
+  }
+  .talk-row:not(.reverse) + .article-callout{margin-right:0;margin-left:116px}
+  .talk-row.reverse + .article-callout{margin-right:116px;margin-left:0}
+}
+
+/* 関連するキーポイントと整理図は、別々のカードにせず一つの編集ブロックにする。 */
+.article-callout.with-key-point>.kplbl{
+  margin-bottom:14px;
+  background:#8a6420;
+  color:#fff;
+}
+.article-callout p.callout-intro{
+  margin:0!important;
+  color:#3f5969;
+  font-size:16px!important;
+  line-height:1.9;
+}
+.article-callout.with-key-point>h4{
+  margin-top:24px!important;
+}
+
+/* 用語注記は大型カードから、会話に従属する短い注記帯へ軽量化する。 */
+.article-callout.term-note{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:18px;
+  align-items:start;
+  padding:18px 22px 19px;
+  border-left-width:3px;
+  background:#f7fafb;
+}
+.article-callout.term-note:after{display:none;content:none}
+.article-callout.term-note>.ey{
+  justify-self:start;
+  margin:2px 0 0;
+  padding:6px 10px;
+  font-size:14.5px!important;
+  letter-spacing:.09em;
+}
+.article-callout.term-note>p{
+  margin:0!important;
+  font-size:16px!important;
+  line-height:1.9;
+}
+
+/* 5項目・3項目を「カードの縦積み」ではなく、一続きの整理表として見せる。 */
+.article-callout.eq .eqrow,
+.article-callout.three .items{
+  display:block;
+  box-sizing:border-box;
+  width:100%;
+  padding:0!important;
+  overflow:hidden;
+  border:1px solid #d4e2e7;
+  border-radius:8px;
+  background:#fff;
+}
+.article-callout.eq .eqrow{margin:0!important}
+.article-callout.three .items{
+  margin:18px 0 0!important;
+  list-style:none!important;
+}
+.article-callout.eq .eqv,
+.article-callout.three .items>li{
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr);
+  gap:14px;
+  align-items:center;
+  box-sizing:border-box;
+  width:100%;
+  margin:0!important;
+  padding:14px 18px!important;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+.article-callout.eq .eqv + .eqv,
+.article-callout.three .items>li + li{
+  border-top:1px solid #dce6ea;
+}
+.article-callout.eq .eqn,
+.article-callout.three .tnum{
+  box-sizing:border-box;
+  width:30px;
+  min-width:30px;
+  height:30px;
+  margin:0;
+  font-size:14px!important;
+}
+.article-callout.eq .eqlead{
+  margin:0 0 18px!important;
+  font-size:16px!important;
+  line-height:1.85;
+}
+.article-callout.eq .evl{
+  display:flex;
+  flex-wrap:wrap;
+  gap:2px 18px;
+  align-items:baseline;
+  min-width:0;
+  color:#183548;
+  font-size:16px!important;
+  font-weight:700;
+  line-height:1.65;
+}
+.article-callout.eq .evl br{display:none}
+.article-callout.eq .evl small{
+  flex:1 1 230px;
+  margin:0;
+  color:#627884;
+  font-size:16px!important;
+  font-weight:400;
+  line-height:1.7;
+}
+.article-callout.three .ttx{
+  display:flex;
+  gap:14px 20px;
+  align-items:baseline;
+  min-width:0;
+}
+.article-callout.three .ttx b{
+  flex:0 1 190px;
+  color:#183548;
+  font-size:16px!important;
+  line-height:1.65;
+}
+.article-callout.three .ttx small{
+  flex:1 1 260px;
+  margin:0;
+  color:#627884;
+  font-size:16px!important;
+  line-height:1.7;
+}
+
+/* 手順も個別カードを外し、同じ縦の読み筋にそろえる。 */
+.article-callout.steps>.step{
+  grid-template-columns:30px minmax(0,1fr);
+  gap:14px;
+  margin:0;
+  padding:14px 2px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+.article-callout.steps>.step + .step{border-top:1px solid #dce6ea}
+.article-callout.steps>.step p{font-size:16px!important}
+
+/* 本文相当の文字は16px以上、補助情報も14px以上を保つ。 */
+.article-callout p{font-size:16px!important}
+.article-callout small{font-size:14px}
+
+@media only screen and (max-width:768px){
+  .talk-row:has(+ .article-callout){margin-bottom:14px}
+  .talk-row + .article-callout{
+    width:100%;
+    max-width:none;
+    margin:0 0 38px;
+  }
+}
+@media only screen and (max-width:640px){
+  .article-callout.term-note{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:17px 16px 18px;
+  }
+  .article-callout.term-note>.ey{margin-top:0}
+  .article-callout.with-key-point>h4{margin-top:20px!important}
+  .article-callout.eq .eqv,
+  .article-callout.three .items>li{
+    gap:12px;
+    align-items:start;
+    padding:13px 12px!important;
+  }
+  .article-callout.eq .evl{display:block}
+  .article-callout.eq .evl small{display:block;margin-top:2px}
+  .article-callout.three .ttx{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:2px;
+  }
+  .article-callout.steps>.step{gap:12px;padding:13px 0}
+}
+/* /P) 対話から解説への接続と整理リストの密度調整 */
+
 /* /2026-07-17 デザイン刷新レイヤー */
 </style>
 
@@ -1848,7 +2040,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p><strong>一言でいうと、「問いが浅い」に尽きる</strong>んです。</p></div>
           </div>
-          <div class="article-callout key-point"><span class="kplbl">キーポイント</span><p>医師が実際に悩むポイントまで仮説を立ててから、問いを設計する。その工程が抜けると、答えは一般論に寄ってしまいます。</p></div>
           <div class="talk-row">
             <div class="talk-speaker">
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
@@ -1891,7 +2082,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>同じ質問でも、誰に聞くかでずいぶん意味が変わってくるんですね。</p></div>
           </div>
-          <div class="article-callout cmp vs"><h4>浅い問いと具体的な問い</h4><div class="cols"><span class="cbadge" aria-hidden="true">VS</span><div class="col a"><span class="lb">浅い問い</span><ul><li>一般論で聞く</li><li>答えも一般論に寄る</li><li>「そこでは悩んでいない」</li></ul></div><div class="col b"><span class="lb">具体的な問い</span><ul><li>ペルソナを絞る</li><li>年齢・併用薬まで設定</li><li>「自分ならどうするか」を引き出す</li></ul></div></div><p class="foot">誰に聞くかでも、答えの意味は変わる。</p></div>
+          <div class="article-callout cmp vs with-key-point"><span class="kplbl">キーポイント</span><p class="callout-intro">医師が実際に悩むポイントまで仮説を立ててから、問いを設計する。その工程が抜けると、答えは一般論に寄ってしまいます。</p><h4>浅い問いと具体的な問い</h4><div class="cols"><span class="cbadge" aria-hidden="true">VS</span><div class="col a"><span class="lb">浅い問い</span><ul><li>一般論で聞く</li><li>答えも一般論に寄る</li><li>「そこでは悩んでいない」</li></ul></div><div class="col b"><span class="lb">具体的な問い</span><ul><li>ペルソナを絞る</li><li>年齢・併用薬まで設定</li><li>「自分ならどうするか」を引き出す</li></ul></div></div><p class="foot">誰に聞くかでも、答えの意味は変わる。</p></div>
           <div class="talk-row">
             <div class="talk-speaker">
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
@@ -2131,7 +2322,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>フォロワーの人数だけだと、誰に届いてるかまではわからないものなんですね。</p></div>
           </div>
-          <div class="article-callout key-point"><span class="kplbl">キーポイント</span><p>患者さん中心のフォロワーか、臨床情報を求める医師中心か。数字の大きさより、その場に誰が集まっているか。医師に何かを届けたいとき、まず見るべきはそこです。</p></div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
               <img src="img_iv/ichikawa_smile_avatar.jpg" alt="市川峰大先生" width="450" height="450">
@@ -2139,7 +2329,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>そうなんです。数より先に、参加者の属性を見ないと。</p></div>
           </div>
-          <div class="article-callout three"><h4>本音が出る3条件</h4><ul class="items"><li><span class="tnum">1</span><div class="ttx"><b>問いが具体的</b><small>症例・年齢・併用薬まで踏み込む</small></div></li><li><span class="tnum">2</span><div class="ttx"><b>発言しやすい場</b><small>匿名・ニックネーム</small></div></li><li><span class="tnum">3</span><div class="ttx"><b>参加者属性が合う</b><small>勉強目的か、生活・キャリア関心か</small></div></li></ul><p class="foot">人数だけでなく「どんな場で、誰に、何を聞くか」。</p></div>
+          <div class="article-callout three with-key-point"><span class="kplbl">キーポイント</span><p class="callout-intro">患者さん中心のフォロワーか、臨床情報を求める医師中心か。数字の大きさより、その場に誰が集まっているか。医師に何かを届けたいとき、まず見るべきはそこです。</p><h4>本音が出る3条件</h4><ul class="items"><li><span class="tnum">1</span><div class="ttx"><b>問いが具体的</b><small>症例・年齢・併用薬まで踏み込む</small></div></li><li><span class="tnum">2</span><div class="ttx"><b>発言しやすい場</b><small>匿名・ニックネーム</small></div></li><li><span class="tnum">3</span><div class="ttx"><b>参加者属性が合う</b><small>勉強目的か、生活・キャリア関心か</small></div></li></ul><p class="foot">人数だけでなく「どんな場で、誰に、何を聞くか」。</p></div>
           <div class="talk-row">
             <div class="talk-speaker">
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
@@ -2217,7 +2407,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>そこは大きいです。ただ、踏み込む人にも、その人なりの根拠があるんですよ。</p><p>逆に、一度ヒヤッとした経験があると、守りに入る。育った施設にも左右されますね。</p></div>
           </div>
-          <div class="article-callout layers"><h4>攻め／守りを決める2層</h4><div class="layer person"><span class="lb">個人側</span><div class="lchips"><span class="laychip">性格</span><span class="laychip">データの読み方</span><span class="laychip">過去の経験</span></div></div><span class="laybadge" aria-hidden="true">×</span><div class="layer org"><span class="lb">組織側</span><div class="lchips"><span class="laychip">施設文化</span><span class="laychip">上級医の姿勢</span><span class="laychip">人員・運用体制</span><span class="laychip">院内ルール</span></div></div><p class="foot">医師個人の意向だけでは、実際の行動は決まらない。</p></div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
               <img src="img_iv/ibayashi.jpg" alt="井林雄太先生" width="450" height="450">
@@ -2232,6 +2421,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>個人の意向だけじゃなく、組織の体制まで見ないと、処方の動きは読めないんですよね。</p></div>
           </div>
+          <div class="article-callout layers"><h4>攻め／守りを決める2層</h4><div class="layer person"><span class="lb">個人側</span><div class="lchips"><span class="laychip">性格</span><span class="laychip">データの読み方</span><span class="laychip">過去の経験</span></div></div><span class="laybadge" aria-hidden="true">×</span><div class="layer org"><span class="lb">組織側</span><div class="lchips"><span class="laychip">施設文化</span><span class="laychip">上級医の姿勢</span><span class="laychip">人員・運用体制</span><span class="laychip">院内ルール</span></div></div><p class="foot">医師個人の意向だけでは、実際の行動は決まらない。</p></div>
           <div class="talk-row">
             <div class="talk-speaker">
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
@@ -2401,6 +2591,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>「デスキリング」って言葉も出てきていますよね。</p><span class="article-note">（※AIへの依存などで技能が低下すること）</span><p><strong>AIに頼りきって自分を磨かないと、医師としての力が育たない</strong>。だから逆に、医師教育が大事になってくると思うんです。</p></div>
           </div>
+          <div class="article-callout key term-note"><span class="ey">コラム</span><p>補足：AI依存とは別の概念。クリニカル・イナーシャ（臨床的惰性）。必要な治療の開始・強化が行われず、現状維持が続いてしまう傾向を指します。AIへの依存や、自己学習不足そのものを指す言葉ではありません。</p></div>
           <div class="talk-row">
             <div class="talk-speaker">
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
@@ -2494,7 +2685,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>若手だと、臨床の疑問をまずAIに聞く人が、かなり増えてます。</p><p>そのあと成書や元論文で確認する人もいますけど、確認せずに済ませちゃうケースもあって。そこが課題ですね。</p><span class="article-note">（※専門書）</span></div>
           </div>
-          <div class="article-callout key"><span class="ey">コラム</span><p>補足：AI依存とは別の概念。クリニカル・イナーシャ（臨床的惰性）。必要な治療の開始・強化が行われず、現状維持が続いてしまう傾向を指します。AIへの依存や、自己学習不足そのものを指す言葉ではありません。</p></div>
           <div class="talk-row">
             <div class="talk-speaker">
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
@@ -2544,7 +2734,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>医療コンテンツでも、一次情報を深く知る人が制作に入るのが、大事なんです。</p></div>
           </div>
-          <div class="article-callout key"><span class="ey">注記</span><p>本記事でいう「一次情報」は、医師の経験や現場の声を指します。治療効果・安全性を示すエビデンスとは役割が異なります。</p></div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
               <img src="img_iv/ibayashi.jpg" alt="井林雄太先生" width="450" height="450">
@@ -2552,6 +2741,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>一人の経験だけじゃなく、複数の医師の声を集めると、見えてくる前提も増えていくんですよね。</p><p>専門性を見極める一つの目安が、専門医資格で。専門医試験って、AIに頼らず答える基礎知識が求められるんです。</p><p>作る側も、AIだけじゃ答えにくい問題を、考えるようになってて。</p></div>
           </div>
+          <div class="article-callout key term-note"><span class="ey">注記</span><p>本記事でいう「一次情報」は、医師の経験や現場の声を指します。治療効果・安全性を示すエビデンスとは役割が異なります。</p></div>
           <div class="talk-row">
             <div class="talk-speaker">
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
