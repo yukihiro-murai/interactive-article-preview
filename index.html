@@ -1479,15 +1479,20 @@ html{scroll-behavior:smooth!important}
 }
 .ichikawa-avatar-frame>img{
   display:block;
-  width:108%!important;
+  width:104%!important;
   max-width:none!important;
-  height:108%!important;
-  margin:-4% 0 0 -8%;
+  height:104%!important;
+  margin:-2% 0 0 -4%;
   border:0!important;
   border-radius:0!important;
   object-fit:cover;
   box-shadow:none!important;
   transform:none!important;
+}
+.talk-speaker>.ichikawa-avatar-frame>img{
+  width:103%!important;
+  height:103%!important;
+  margin:-1.5% 0 0 -3%;
 }
 .speaker-profile>.ichikawa-avatar-frame{width:136px;height:136px;border:5px solid #fff}
 .talk-speaker>.ichikawa-avatar-frame{width:78px;height:78px;border:2px solid #a5d2ce}
@@ -1502,6 +1507,9 @@ html{scroll-behavior:smooth!important}
   .speaker-profile>.ichikawa-avatar-frame{width:118px;height:118px}
   .talk-speaker>.ichikawa-avatar-frame{width:64px;height:64px}
   .recap-comment>.ichikawa-avatar-frame{width:72px;height:72px}
+}
+@media only screen and (max-width:600px){
+  .talk-speaker>.ichikawa-avatar-frame{width:54px;height:54px}
 }
 @media only screen and (max-width:420px){
   .recap-comment>.ichikawa-avatar-frame{width:60px;height:60px}
