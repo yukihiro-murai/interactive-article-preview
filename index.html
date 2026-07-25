@@ -2165,20 +2165,20 @@ html{scroll-behavior:smooth!important}
 }
 .note-marker{
   display:inline-block;
-  margin-left:.08em;
-  color:#2f749b;
+  margin-left:.04em;
+  color:inherit;
   font-size:14px;
-  font-weight:800;
+  font-weight:600;
   line-height:1;
-  vertical-align:super;
+  vertical-align:.32em;
 }
 .note-ref-tail{white-space:nowrap}
 
 /* 講演とフリートークの間を、発言ではなく編集部の前情報で接続する。 */
 .talk-prologue{
   box-sizing:border-box;
-  max-width:790px;
-  margin:0 auto 44px;
+  max-width:840px;
+  margin:0 auto 28px;
   padding:23px 27px 24px;
   border:1px solid #cbdde8;
   border-left:4px solid #2f7eab;
@@ -2188,10 +2188,10 @@ html{scroll-behavior:smooth!important}
 .talk-prologue__label{
   margin:0 0 7px!important;
   color:#2a6f98;
-  font-size:14px!important;
+  font-size:16px!important;
   font-weight:800;
   line-height:1.5;
-  letter-spacing:.08em;
+  letter-spacing:.05em;
 }
 .talk-prologue h3{
   margin:0 0 10px!important;
@@ -2227,7 +2227,7 @@ html{scroll-behavior:smooth!important}
     padding:18px 20px 16px;
   }
   .talk-prologue{
-    margin-bottom:36px;
+    margin-bottom:24px;
     padding:20px 20px 21px;
   }
   .talk-prologue h3{font-size:21px!important}
@@ -2309,6 +2309,64 @@ html{scroll-behavior:smooth!important}
 }
 /* /R) 冒頭・人物情報・注釈の最終調整 */
 
+/* ========== S) 導入順序とページ内ナビゲーションの操作性（2026-07-25） ========== */
+/* 講演後の導入を読んでから各回を選べる、表示順と読み上げ順が一致した構成にする。 */
+.series-hero>.talk-prologue{
+  grid-column:1;
+  grid-row:3;
+  width:100%;
+  max-width:840px;
+  margin:0 auto 28px;
+}
+.series-hero>.article-map{
+  grid-row:4;
+  margin-bottom:0;
+}
+
+/* 公開済みカードだけに、マウス・キーボード・タッチの操作状態を示す。 */
+.series-hero>.article-map .article-map__item[href]{
+  color:inherit;
+  text-decoration:none;
+  cursor:pointer;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:rgba(7,93,136,.14);
+  box-shadow:0 2px 0 rgba(7,93,136,.07);
+  transition:transform .16s ease,border-color .16s ease,background-color .16s ease,box-shadow .16s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .series-hero>.article-map .article-map__item[href]:hover{
+    border-color:#8baebd;
+    background:#f5fafc;
+    box-shadow:0 8px 20px -16px rgba(23,62,91,.55);
+  }
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .series-hero>.article-map .article-map__item[href]:hover{transform:translateY(-2px)}
+}
+.series-hero>.article-map .article-map__item[href]:focus-visible{
+  outline:3px solid #2f7896;
+  outline-offset:4px;
+  border-color:#7ea9ba;
+  background:#f5fafc;
+}
+.series-hero>.article-map .article-map__item[href]:active{
+  transform:translateY(0);
+  border-color:#6f9cac;
+  background:#eaf4f7;
+  box-shadow:inset 0 0 0 1px rgba(7,93,136,.08);
+}
+.article-part>h2[tabindex="-1"]:focus{outline:none}
+.article-part>h2[tabindex="-1"]:focus-visible{
+  outline:3px solid #2f7896;
+  outline-offset:6px;
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  .series-hero>.article-map .article-map__item[href]{transition:none}
+  .series-hero>.article-map .article-map__item[href]:hover{transform:none}
+}
+/* /S) 導入順序とページ内ナビゲーションの操作性 */
+
 /* /2026-07-17 デザイン刷新レイヤー */
 </style>
 
@@ -2342,11 +2400,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="article-title"><span class="title-main">医師フリートーク</span></p>
         <h1 class="series-theme" id="series-title">医師の意思決定・<br class="series-title-break">本音・AI時代の判断軸</h1>
       </div>
-      <section class="article-map" aria-label="全3回の構成">
-        <a class="article-map__item" href="#part1" data-step="01"><svg viewBox="0 0 96 42" aria-hidden="true"><path d="M2 24h18l6-12 10 24 10-20 7 8h41"/></svg><strong>第1回</strong><p>正しい情報だけでは、診療は決まらない</p></a>
-        <a class="article-map__item" href="#part2" data-step="02"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 7C25 18 16 28 16 39a16 16 0 0 0 32 0C48 28 39 18 32 7Z"/><path d="M25 41c1 5 4 8 9 9"/><circle cx="40" cy="29" r="3"/></svg><strong>第2回</strong><p>医師の本音は、問いと場に表れる</p></a>
-        <a class="article-map__item" href="#part3" data-step="03"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 10c-10 0-15 9-15 20 0 13 7 23 17 23 7 0 10-5 10-12V23c0-8-5-13-12-13Z"/><path d="M40 10c10 0 15 9 15 20 0 13-7 23-17 23-7 0-10-5-10-12V23c0-8 5-13 12-13Z"/><path d="M23 29c5 0 8 3 9 8m9-8c-5 0-8 3-9 8"/></svg><strong>第3回</strong><p>AIが広がるほど、人の判断軸が問われる</p></a>
-      </section>
       <div class="hero-media">
         <figure class="hero-photo">
           <div class="photo-frame"><img src="img_iv/innovation2026_ec.jpg" srcset="img_iv/innovation2026_ec.jpg 640w, img_iv/innovation2026_ec_2x.jpg 1280w" sizes="(max-width: 768px) calc(100vw - 53px), 810px" alt="左に井林雄太先生、右に市川峰大先生が並ぶ医師フリートーク" width="640" height="360"></div>
@@ -2356,12 +2409,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </figcaption>
         </figure>
       </div>
-    </section>
       <aside class="talk-prologue" aria-labelledby="talk-prologue-title">
         <p class="talk-prologue__label">この連載について</p>
         <h3 id="talk-prologue-title">講演後、二人の医師とフリートークへ</h3>
         <p>Pharma Innovation EXPO 2026では、医師が臨床で直面する「判断の迷い」を可視化する、タイプ別診断コンテンツをご紹介しました。本連載では、講演では語りきれなかった診療や情報収集の現場のリアルを、井林先生・市川先生のフリートークから全3回で掘り下げます。</p>
       </aside>
+      <nav class="article-map" aria-label="全3回の構成">
+        <a class="article-map__item" href="#part1" data-step="01"><svg viewBox="0 0 96 42" aria-hidden="true"><path d="M2 24h18l6-12 10 24 10-20 7 8h41"/></svg><strong>第1回</strong><p>正しい情報だけでは、診療は決まらない</p></a>
+        <a class="article-map__item" href="#part2" data-step="02"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 7C25 18 16 28 16 39a16 16 0 0 0 32 0C48 28 39 18 32 7Z"/><path d="M25 41c1 5 4 8 9 9"/><circle cx="40" cy="29" r="3"/></svg><strong>第2回</strong><p>医師の本音は、問いと場に表れる</p></a>
+        <a class="article-map__item" href="#part3" data-step="03"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 10c-10 0-15 9-15 20 0 13 7 23 17 23 7 0 10-5 10-12V23c0-8-5-13-12-13Z"/><path d="M40 10c10 0 15 9 15 20 0 13-7 23-17 23-7 0-10-5-10-12V23c0-8 5-13 12-13Z"/><path d="M23 29c5 0 8 3 9 8m9-8c-5 0-8 3-9 8"/></svg><strong>第3回</strong><p>AIが広がるほど、人の判断軸が問われる</p></a>
+      </nav>
+    </section>
       <section class="speaker-profiles" aria-labelledby="speaker-heading">
         <h2 id="speaker-heading"><span class="section-label">対談者</span>この記事の話し手</h2>
         <div class="speaker-profile">
@@ -3482,6 +3540,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 (function(){
   var activeScrollAnimation=0;
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function focusPartHeading(target){
+    var heading=target.querySelector('h2');
+    if(!heading) return;
+    heading.setAttribute('tabindex','-1');
+    try{heading.focus({preventScroll:true});}
+    catch(error){heading.focus();}
+  }
   document.querySelectorAll('img[src*="ichikawa_smile_avatar"]').forEach(function(img){
     if(img.parentElement.classList.contains('ichikawa-avatar-frame')) return;
     var frame=document.createElement('span');
@@ -3500,15 +3566,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var distance=endY-startY;
       var duration=Math.min(900,Math.max(520,Math.abs(distance)*.025));
       var startedAt=null;
+      window.history.pushState(null,'',this.getAttribute('href'));
+      if(reduceMotion){
+        window.scrollTo({top:endY,behavior:'auto'});
+        focusPartHeading(target);
+        return;
+      }
       function animateScroll(timestamp){
         if(startedAt===null) startedAt=timestamp;
         var progress=Math.min((timestamp-startedAt)/duration,1);
         var eased=1-Math.pow(1-progress,3);
         window.scrollTo({top:startY+distance*eased,behavior:'instant'});
         if(progress<1) activeScrollAnimation=window.requestAnimationFrame(animateScroll);
-        else activeScrollAnimation=0;
+        else{
+          activeScrollAnimation=0;
+          focusPartHeading(target);
+        }
       }
-      window.history.pushState(null,'',this.getAttribute('href'));
       activeScrollAnimation=window.requestAnimationFrame(animateScroll);
     });
   });
