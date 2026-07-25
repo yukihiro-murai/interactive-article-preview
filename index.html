@@ -1970,6 +1970,295 @@ html{scroll-behavior:smooth!important}
 }
 /* /Q) 解説コンテンツの編集グリッド統一 */
 
+/* ========== R) 冒頭・人物情報・注釈の最終調整（2026-07-25） ========== */
+/* 濃紺の格は残しながら明度と余白を整え、フリートークらしい軽さを加える。 */
+.series-hero>.series-lockup{
+  gap:14px;
+  padding:28px 40px 31px;
+  border-color:#31596d;
+  border-radius:16px;
+  background:#1f465a;
+  box-shadow:0 16px 34px -30px rgba(7,29,45,.72);
+}
+.series-lockup .series-eyebrow{
+  padding:8px 14px;
+  border-color:#d5e5e9;
+  background:#f7fbfc;
+  color:#285467;
+  font-size:18px!important;
+  line-height:1.3;
+  letter-spacing:.1em;
+}
+.series-lockup .title-main{
+  color:#edf5f7;
+  font-size:22px!important;
+  font-weight:700;
+  line-height:1.35;
+  letter-spacing:.07em;
+}
+.series-lockup .series-theme{
+  color:#fff;
+  font-size:35px!important;
+  font-weight:750;
+  line-height:1.36;
+  letter-spacing:.03em;
+}
+
+/* 全3回ナビは回次を見出しとして立て、本文タイトルとの強弱を明確にする。 */
+.series-hero>.article-map .article-map__item strong{
+  margin-bottom:5px;
+  font-size:22px!important;
+  font-weight:800;
+  line-height:1.4;
+}
+.series-hero>.article-map .article-map__item p{
+  color:#4e6674;
+  font-size:17px!important;
+  line-height:1.75;
+}
+
+/* 写真下は、位置・氏名・専門領域を一続きに読める簡潔な案内にする。 */
+.series-hero>.hero-media .hero-speaker-guide{
+  gap:10px;
+  margin-top:12px;
+  background:transparent;
+}
+.series-hero>.hero-media .hero-speaker{
+  display:flex!important;
+  align-items:center;
+  gap:9px 11px;
+  height:auto;
+  padding:11px 14px;
+  border:0!important;
+  border-left:3px solid var(--thread-rose)!important;
+  border-radius:6px;
+  background:#fdfafb;
+}
+.series-hero>.hero-media .hero-speaker+.hero-speaker{
+  border:0!important;
+  border-left:3px solid var(--thread-teal)!important;
+  background:#f8fbfa;
+}
+.series-hero>.hero-media .hero-speaker__position{
+  display:inline-flex;
+  flex:0 0 auto;
+  width:auto;
+  height:auto;
+  padding:4px 7px;
+  border-radius:4px;
+  font-size:14px;
+  line-height:1.35;
+}
+.series-hero>.hero-media .hero-speaker__details{
+  display:flex!important;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px 10px!important;
+  min-width:0;
+}
+.series-hero>.hero-media .hero-speaker__details strong{
+  font-size:18px;
+  line-height:1.4;
+  white-space:normal;
+}
+.hero-speaker__specialty,
+.speaker-specialty{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.speaker-specialty svg{
+  width:22px;
+  height:22px;
+  padding:3px;
+  border-radius:50%;
+  background:rgba(255,255,255,.72);
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.speaker-specialty::before{
+  content:"";
+  display:block;
+  flex:0 0 22px;
+  width:22px;
+  height:22px;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+.speaker-specialty.is-metabolic::before{
+  background-image:url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Cpath%20d='M32%207C25%2018%2016%2028%2016%2039a16%2016%200%200%200%2032%200C48%2028%2039%2018%2032%207Z'%20fill='none'%20stroke='%23a24d64'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M25%2041c1%205%204%208%209%209'%20fill='none'%20stroke='%23a24d64'%20stroke-width='2.5'%20stroke-linecap='round'/%3E%3Ccircle%20cx='40'%20cy='29'%20r='3'%20fill='none'%20stroke='%23a24d64'%20stroke-width='2.5'/%3E%3C/svg%3E");
+}
+.speaker-specialty.is-renal::before{
+  background-image:url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Cpath%20d='M24%2010c-10%200-15%209-15%2020%200%2013%207%2023%2017%2023%207%200%2010-5%2010-12V23c0-8-5-13-12-13Zm16%200c10%200%2015%209%2015%2020%200%2013-7%2023-17%2023-7%200-10-5-10-12V23c0-8%205-13%2012-13Z'%20fill='none'%20stroke='%23167d7d'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M23%2029c5%200%208%203%209%208m9-8c-5%200-8%203-9%208'%20fill='none'%20stroke='%23167d7d'%20stroke-width='2.5'%20stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* 詳細プロフィールと章見出しは、一段ずつ明確な文字階層にする。 */
+.speaker-profiles h2{font-size:32px!important}
+.speaker-profile h3{gap:10px;font-size:24px!important}
+.speaker-specialty{font-size:14px!important}
+.article-part>h2{font-size:30px!important;line-height:1.45}
+.series-cta h3{font-size:26px!important;line-height:1.5}
+.series-cta p{font-size:17px!important;line-height:1.95}
+
+/* 第2回の会話に従属する、井林先生のコミュニティ構成。 */
+.community-overview{
+  position:relative;
+  z-index:1;
+  box-sizing:border-box;
+  width:calc(100% - 116px);
+  max-width:780px;
+  margin:-24px 116px 44px 0;
+  padding:20px 24px 18px;
+  border:1px solid #ead9de;
+  border-left:4px solid var(--thread-rose);
+  border-radius:10px;
+  background:#fffafb;
+}
+.community-overview__label{
+  margin:0 0 10px!important;
+  color:#8f4358;
+  font-size:16px!important;
+  font-weight:800;
+  line-height:1.5;
+}
+.community-overview ul{
+  margin:0!important;
+  padding:0!important;
+  list-style:none!important;
+}
+.community-overview li{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:baseline;
+  margin:0!important;
+  padding:10px 0!important;
+  border-top:1px solid #eadfe2;
+  color:#3f5969;
+  font-size:16px!important;
+  line-height:1.65;
+}
+.community-overview li::before{display:none!important;content:none!important}
+.community-overview li strong{
+  color:#8f4358;
+  font-size:16px;
+  white-space:nowrap;
+}
+
+/* 注釈対象語と直後の注釈を、視覚・読み上げの両方で対応づける。 */
+.talk-bubble .note-term{
+  font-style:normal;
+  font-weight:700;
+  text-decoration-line:underline;
+  text-decoration-style:dotted;
+  text-decoration-thickness:1px;
+  text-decoration-color:#7898a7;
+  text-underline-offset:.24em;
+}
+.talk-bubble>.article-note[role="note"]{
+  padding-left:14px;
+  border-left:2px solid #9bb4bf;
+}
+
+@media only screen and (max-width:768px){
+  .series-hero>.series-lockup{padding:23px 20px 26px}
+  .series-lockup .series-eyebrow{font-size:17px!important}
+  .series-lockup .title-main{font-size:19px!important}
+  .series-lockup .series-theme{font-size:30px!important}
+  .series-hero>.article-map .article-map__item strong{font-size:21px!important}
+  .series-hero>.article-map .article-map__item p{font-size:16px!important}
+  .speaker-profiles h2{font-size:28px!important}
+  .speaker-profile h3{font-size:22px!important}
+  .article-part>h2{font-size:26px!important}
+  .series-cta h3{font-size:23px!important}
+  .community-overview{
+    width:100%;
+    max-width:none;
+    margin:-18px 0 38px;
+    padding:18px 20px 16px;
+  }
+}
+@media only screen and (max-width:640px){
+  .series-hero>.hero-media .hero-speaker-guide{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .series-hero>.hero-media .hero-speaker{padding:10px 12px}
+  .series-hero>.hero-media .hero-speaker__details strong{font-size:17px}
+}
+@media only screen and (max-width:420px){
+  .head{padding-right:8px;padding-left:8px}
+  .head h1{flex:0 0 100px;width:100px}
+  #bigm2y_logo{width:100px!important}
+  .telbox{flex:1 1 auto;width:auto;gap:6px;justify-content:flex-end}
+  .telrow{min-width:0;margin-left:0}
+  .telrow1{
+    margin-right:0;
+    font-size:14px!important;
+    line-height:1.12;
+    letter-spacing:-.04em;
+    white-space:nowrap;
+  }
+  .telrow1 span{font-size:14px!important}
+  .inquiry-btn{
+    flex:0 0 auto;
+    width:auto;
+    margin-right:0;
+    padding:10px 8px;
+    font-size:14px!important;
+    white-space:nowrap;
+  }
+  .series-lockup .series-eyebrow{font-size:16px!important}
+  .series-lockup .title-main{font-size:18px!important}
+  .series-lockup .series-theme{font-size:27px!important}
+  .series-hero>.article-map .article-map__item strong{font-size:20px!important}
+  .series-hero>.article-map .article-map__item p{white-space:normal!important}
+  .community-overview{padding:16px 15px 14px}
+  .community-overview li{grid-template-columns:1fr;gap:2px}
+}
+@media only screen and (max-width:370px){
+  .head{
+    display:grid;
+    grid-template-columns:1fr auto;
+    grid-template-rows:46px 26px;
+    height:88px;
+    padding:8px 12px;
+    background:#fff;
+  }
+  .head h1{
+    grid-column:1;
+    grid-row:1;
+    align-self:center;
+    width:100px;
+    height:auto;
+    padding:0;
+  }
+  .telbox{display:contents}
+  .telrow{
+    grid-column:1/-1;
+    grid-row:2;
+    align-self:center;
+    justify-self:center;
+    width:auto;
+    margin:0;
+  }
+  .telrow1 br.sp_view{display:none!important}
+  .telrow1 span{margin-left:8px}
+  .inquiry-btn{
+    grid-column:2;
+    grid-row:1;
+    align-self:center;
+  }
+}
+@media only screen and (max-width:340px){
+  .series-lockup .series-theme{font-size:24px!important}
+}
+/* /R) 冒頭・人物情報・注釈の最終調整 */
+
 /* /2026-07-17 デザイン刷新レイヤー */
 </style>
 
@@ -2045,7 +2334,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
               <p class="talk-speaker-name">平井</p>
             </div>
-            <div class="talk-bubble"><p>今日はお二人と、じっくりお話しできるのを楽しみにしていました。</p></div>
+            <div class="talk-bubble"><p>今日はお二人と、じっくりお話しできるのを楽しみにしていました。</p><p>Pharma Innovation EXPO 2026の講演では、医師が臨床で直面する「判断の迷い」をタイプ別診断コンテンツでどう可視化するかをご紹介しましたが、今日はその背景にある、診療や情報収集の現場のリアルも率直に伺えればと思っています。</p></div>
           </div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
@@ -2158,7 +2447,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ibayashi.jpg" alt="井林雄太先生" width="450" height="450">
               <p class="talk-speaker-name">井林先生</p>
             </div>
-            <div class="talk-bubble"><p>たとえば、GLP-1受容体作動薬っていう薬があって。</p><span class="article-note">（※製剤によって、2型糖尿病や肥満症などの治療に用いられる薬）</span><p>肥満のある患者さんだと、有力な選択肢になることがあるんです。</p><p>でも、認知症があって、ご家族の支援も十分でない患者さんだと、使いたくても難しくて。</p></div>
+            <div class="talk-bubble"><p>たとえば、<dfn class="note-term" aria-describedby="note-glp1">GLP-1受容体作動薬</dfn>っていう薬があって。</p><span class="article-note" id="note-glp1" role="note">（※製剤によって、2型糖尿病や肥満症などの治療に用いられる薬）</span><p>肥満のある患者さんだと、有力な選択肢になることがあるんです。</p><p>でも、認知症があって、ご家族の支援も十分でない患者さんだと、使いたくても難しくて。</p></div>
           </div>
           <div class="talk-row">
             <div class="talk-speaker">
@@ -2229,7 +2518,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ibayashi.jpg" alt="井林雄太先生" width="450" height="450">
               <p class="talk-speaker-name">井林先生</p>
             </div>
-            <div class="talk-bubble"><p>その典型が、SGLT2阻害薬ですね。</p><span class="article-note">（※2型糖尿病に加え、製剤によって慢性心不全や慢性腎臓病にも用いられる薬）</span><p>循環器の先生は「とにかく心不全を減らしたい」から、前向きに使う。</p></div>
+            <div class="talk-bubble"><p>その典型が、<dfn class="note-term" aria-describedby="note-sglt2">SGLT2阻害薬</dfn>ですね。</p><span class="article-note" id="note-sglt2" role="note">（※2型糖尿病に加え、製剤によって慢性心不全や慢性腎臓病にも用いられる薬）</span><p>循環器の先生は「とにかく心不全を減らしたい」から、前向きに使う。</p></div>
           </div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
@@ -2443,6 +2732,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="talk-bubble"><p>メインのコミュニティには、1,000人を超える先生が参加しています。</p></div>
           </div>
+          <aside class="community-overview" aria-labelledby="community-overview-title">
+            <p class="community-overview__label" id="community-overview-title">主な医師コミュニティ</p>
+            <ul>
+              <li><span>総合内科専門医勉強会コミュニティ</span><strong>1,200人</strong></li>
+              <li><span>糖尿病専門医勉強会コミュニティ</span><strong>400人</strong></li>
+              <li><span>内分泌専門医勉強会コミュニティ</span><strong>500人</strong></li>
+              <li><span>その他、各科内科系専門医勉強会コミュニティを運営</span></li>
+            </ul>
+          </aside>
           <div class="talk-row">
             <div class="talk-speaker">
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
@@ -2582,7 +2880,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
               <p class="talk-speaker-name">平井</p>
             </div>
-            <div class="talk-bubble"><p>フォロワーの人数だけだと、誰に届いてるかまではわからないものなんですね。</p></div>
+            <div class="talk-bubble"><p>フォロワーの人数だけだと、誰に届いてるかまではわからないものなんですね。</p><p>井林先生のコミュニティに限らず、一般的な情報発信でも、患者さんが中心なのか、臨床情報を求める医師が中心なのかで、その医師がどんな情報を発信し、誰に届いているのかという傾向まで見えてきそうです。</p></div>
           </div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
@@ -2830,7 +3128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ichikawa_smile_avatar.jpg" alt="市川峰大先生" width="450" height="450">
               <p class="talk-speaker-name">市川先生</p>
             </div>
-            <div class="talk-bubble"><p>ただ、生成AIの特性上、もっともらしい答えを探すことにはたけていますが、まれだけど大事な鑑別が抜けることがあって。</p><span class="article-note">（※鑑別＝症状の原因として疑われる病気を挙げ、絞り込んでいくこと）</span></div>
+            <div class="talk-bubble"><p>ただ、生成AIの特性上、もっともらしい答えを探すことにはたけていますが、まれだけど大事な<dfn class="note-term" aria-describedby="note-differential">鑑別</dfn>が抜けることがあって。</p><span class="article-note" id="note-differential" role="note">（※鑑別＝症状の原因として疑われる病気を挙げ、絞り込んでいくこと）</span></div>
           </div>
           <div class="talk-row">
             <div class="talk-speaker">
@@ -2851,7 +3149,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ibayashi.jpg" alt="井林雄太先生" width="450" height="450">
               <p class="talk-speaker-name">井林先生</p>
             </div>
-            <div class="talk-bubble"><p>「デスキリング」って言葉も出てきていますよね。</p><span class="article-note">（※AIへの依存などで技能が低下すること）</span><p><strong>AIに頼りきって自分を磨かないと、医師としての力が育たない</strong>。だから逆に、医師教育が大事になってくると思うんです。</p></div>
+            <div class="talk-bubble"><p>「<dfn class="note-term" aria-describedby="note-deskilling">デスキリング</dfn>」って言葉も出てきていますよね。</p><span class="article-note" id="note-deskilling" role="note">（※AIへの依存などで技能が低下すること）</span><p><strong>AIに頼りきって自分を磨かないと、医師としての力が育たない</strong>。だから逆に、医師教育が大事になってくると思うんです。</p></div>
           </div>
           <div class="talk-row">
             <div class="talk-speaker">
@@ -2943,7 +3241,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img_iv/ichikawa_smile_avatar.jpg" alt="市川峰大先生" width="450" height="450">
               <p class="talk-speaker-name">市川先生</p>
             </div>
-            <div class="talk-bubble"><p>若手だと、臨床の疑問をまずAIに聞く人が、かなり増えてます。</p><p>そのあと成書や元論文で確認する人もいますけど、確認せずに済ませちゃうケースもあって。そこが課題ですね。</p><span class="article-note">（※専門書）</span></div>
+            <div class="talk-bubble"><p>若手だと、臨床の疑問をまずAIに聞く人が、かなり増えてます。</p><p>そのあと<dfn class="note-term" aria-describedby="note-seisho">成書</dfn>や元論文で確認する人もいますけど、確認せずに済ませちゃうケースもあって。そこが課題ですね。</p><span class="article-note" id="note-seisho" role="note">（※専門書）</span></div>
           </div>
           <div class="talk-row">
             <div class="talk-speaker">
@@ -3008,7 +3306,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <img src="img/bigm2y_logo.jpg" alt="株式会社ビッグエムズワイのロゴ" width="450" height="450">
               <p class="talk-speaker-name">平井</p>
             </div>
-            <div class="talk-bubble"><p>製薬企業の一部では、医師との接点データから、次に届ける情報を提案する「ネクスト・ベスト・アクション」にも取り組んでいますよね。</p><span class="article-note">（※医師ごとに、次の適切な情報提供を提案する考え方）</span><p>そうやって選ばれた情報を届けられるのって、医師として、どう感じますか？</p></div>
+            <div class="talk-bubble"><p>製薬企業の一部では、医師との接点データから、次に届ける情報を提案する「<dfn class="note-term" aria-describedby="note-nba">ネクスト・ベスト・アクション</dfn>」にも取り組んでいますよね。</p><span class="article-note" id="note-nba" role="note">（※医師ごとに、次の適切な情報提供を提案する考え方）</span><p>そうやって選ばれた情報を届けられるのって、医師として、どう感じますか？</p></div>
           </div>
           <div class="talk-row reverse">
             <div class="talk-speaker">
@@ -3095,7 +3393,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </section>
       </section>
-      <section class="series-cta" aria-labelledby="cta-heading"><div class="series-cta__icon"><svg viewBox="0 0 96 42" aria-hidden="true"><path d="M2 24h18l6-12 10 24 10-20 7 8h41"/></svg></div><div><h3 id="cta-heading">医師の意思決定を起点に、企画を考える</h3><p>医師に届く情報設計には、正しい情報だけでなく、判断が揺れる文脈まで捉える必要があります。BIGM2Yでは、医師インサイトの整理から企画・コンテンツ設計までご相談を承っています。</p></div></section>
+      <section class="series-cta" aria-labelledby="cta-heading"><div class="series-cta__icon"><svg viewBox="0 0 96 42" aria-hidden="true"><path d="M2 24h18l6-12 10 24 10-20 7 8h41"/></svg></div><div><h3 id="cta-heading">医師の意思決定を起点に、企画を考える</h3><p>医師に届く情報設計には、正しい情報を届けるだけでなく、臨床でどこに迷い、何を判断軸にしているのかを捉える視点が欠かせません。今回のタイプ別診断コンテンツのように、判断のプロセスを参加型の体験として可視化することは、医師自身の気づきと、企画側の理解の両方につながります。BIGM2Yでは、そうした医師インサイトの整理から企画・コンテンツ設計までを一緒に考えています。</p></div></section>
       <figure class="editorial-photo editorial-photo--side"><div class="editorial-photo__frame"><img src="img_iv/innovation2026_side.jpg" width="1400" height="933" alt="横から撮影した井林先生と市川先生の対談風景"></div><figcaption><span class="editorial-photo__index">対談風景</span><span>相手の言葉に耳を傾けながら、率直な意見が交わされました。</span></figcaption></figure>
       <section class="article-disclaimer" aria-labelledby="disclaimer-heading">
         <h3 id="disclaimer-heading">免責事項・記事をお読みいただくにあたって</h3>
